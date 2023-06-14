@@ -2,20 +2,19 @@
 
 namespace App\Http\Livewire\Dashboard;
 
-use App\Models\Collect;
 use App\Models\User;
-use App\Models\Country;
+use App\Models\Collect;
 use App\Models\Municip;
 use Livewire\Component;
-use App\Models\District;
-use App\Models\Province;
 use App\Models\Container;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Auth;
 
 class DashboardComponent extends Component
 {
     public  $count ;
     public  $municipName ;
+    public $t = [1,2,3,4,5,6,7,8,9,10,11];
     public function render()
     {
 
@@ -56,12 +55,30 @@ class DashboardComponent extends Component
             'adminContainers'=>$adminContainers?? '0',
             'collectCountAdmin'=>$collectCountAdmin ?? '0',
             'municipName'=>$this->municipName?? '',
-            'collectCount'=>$this->collectCount(),
+            'collectCount'=>$this->collectCount()?? '0',
             'chartjs' => $chartjs
         ]);
     }
 
-    private function collectCount()
+//     private function collectCount()
+// {
+//         $user1 = User::where('municip_id',Auth::user()->municip_id )->first();
+//         $this->municipName = Municip::where('id',$user1->municip_id)->first();
+//         $containers = Container::where('municip_id','=',$user1->municip_id)->get();
+//         foreach ($containers as $c) {
+//             //    $r = $c->collect()->rightJoin('containers', 'containers.id', '=', 'collects.container_id')
+//             // ->get();
+
+//                  $data = Collect:: where('container_id',$c->id)->get();
+//                 $data->map(function ($a){
+//                     return  $this->count=$a->count();
+//                 });
+//         }
+//     return $this->count;
+// }
+
+
+private function collectCount()
 {
      $municips= Municip::where('id',Auth::user()->municip_id)->get();
 
@@ -80,67 +97,6 @@ class DashboardComponent extends Component
            }
      }
 
-    //->map(function ($municip){
-    //     $municip = $municip->containers->map(function ($containers){
-    //         return $containers->count =  $containers->map(function($cts){
-    //             return $cts->collect_count_collected();
-    //         })->sum();
-    //     })->sum();
-    //         return (Object) array('id' => $municip->id,
-    //     'name'=>$municip->name,
-    //      'count' => $municip->count);
-    // });
-
-
-    // ->map(function ($municip) {
-    //   $municip = $municip->containers->map(function ($containers) {
-
-    //     return $containers->count =  $containers->map(function($cts){
-
-    //         return $cts->collect_count_collected();
-    //     })->sum();
-    //     })->sum();
-    //     return (Object) array('id' => $municip->id,
-    //     'name'=>$municip->name,
-    //     'count' => $municip->count);
-    // });
-
-
-    return $this->count;
-
-}
-
-
-
-    // public function dashbord()
-    // {
-    //    $data1 = Collect::where('status_id',6)->count();
-    //     $dataC = Capacity::where('peso',336)->first();
-    //     $dataCon= Container::with('status')->count();
-    //     $provinces = Province::all();
-    //     $Qt = $dataC->peso*$data1;
-
-    //     return view('admin.dashbord.index')
-    //     ->with('data1', $data1)
-    //     ->with('qt', $Qt)
-    //     ->with('qc', $dataCon)
-    //     ->with('label_province',$this->countries()->pluck('name'))
-    //     ->with('data_province',$this->countries()->pluck('count'))
-    //     ->with('label_district',$this->districts()->pluck('name'))
-    //     ->with('data_district',$this->districts()->pluck('count'))
-    //     ->with('provinces',$provinces);
-    // }
-
-
-    public function charts()
-    {
-        $datas = Country::with('provinces')
-        ->with(['provinces'=>function($d){
-             $d->with(['districts'=>function($c){
-                $c->withCount('containres');
-             }]);
-        }])->get();
-        //$datas = Province::with('districts')->withCount('districts')->get();
-        return response()->json($datas, 200);
     }
+
 }

@@ -42,10 +42,19 @@ class PermissionComponent extends Component
                 }
             }
         }
+        if(auth()->user()->roles->first()->name == 'super-admin'){
+            $info =  User::select('id','name')->get();
+         }else if(auth()->user()->roles->first()->name == 'admin'){
+            $info = User::select('id','name')->where('municip_id',Auth::user()->municip_id )->Orwhere('municip_id',0)->get();
+         }else{
+            abort(401);
+         }
+
+
         return view('livewire.permission.component',[
             'roles'=>$roles,
             'permissions'=>$permissions,
-            'usuarios'=>User::select('id','name')->where('municip_id',Auth::user()->municip_id )->Orwhere('municip_id',0)->get()
+            'usuarios'=> $info
         ]);
     }
 

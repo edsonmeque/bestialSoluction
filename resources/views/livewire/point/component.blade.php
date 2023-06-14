@@ -39,7 +39,7 @@
                             @foreach ($info as $i)
                             <tr>
                                 <td>{{$i->id}}</td>
-                                <td><img src="{{asset('storage/uploads/images/'.$i->image)}}" width="100" height="100" alt=""></td>
+                                <td><img src="{{asset('storage/uploads/point/'.$i->image)}}" width="100" height="100" alt=""></td>
                                 <td>{{$i->lat}},{{$i->lng}}</td>
                                 <td>{{$i->created_at}}</td>
                                 <td>{{$i->updated_at}}</td>

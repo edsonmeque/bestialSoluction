@@ -39,13 +39,13 @@ class ProvinceTableSeeder extends Seeder
         ]);
 
 
-        $dataSul = ['Beira','Manica','Tete','Zambezia'];
-       foreach ($dataSul as $data) {
-        District::create([
-           'name' => $data,
-           'province_id'=>3
-        ]);
-   }
+    //     $dataSul = ['Beira','Manica','Tete','Zambezia'];
+    //    foreach ($dataSul as $data) {
+    //     District::create([
+    //        'name' => $data,
+    //        'province_id'=>6
+    //     ]);
+  // }
    }
 
     }

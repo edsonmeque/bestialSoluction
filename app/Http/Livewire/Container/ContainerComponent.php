@@ -36,7 +36,13 @@ class ContainerComponent extends Component
         Municip $municip,
         Status $status,){
 
-        $this->municips=    $municip->where('id',auth()->user()->municip_id)->get();
+        if(auth()->user()->roles->first()->name == 'super-admin'){
+
+            $this->municips=$municip;
+        }else if(auth()->user()->roles->first()->name == 'admin'){
+
+            $this->municips=    $municip->where('id',auth()->user()->municip_id)->get();
+        }
         $this->statuses= $status;
      }
     public function render()

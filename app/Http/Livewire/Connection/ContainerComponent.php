@@ -23,7 +23,14 @@ class ContainerComponent extends Component
 
     public function mount(Municip $municip)
     {
-        $this->municips =$municip->where('user_id',auth()->user()->municip_id)->get();
+
+        if(auth()->user()->roles->first()->name == 'super-admin'){
+            $this->municips=    $municip->get();
+        }else if(auth()->user()->roles->first()->name == 'admin'){
+
+            $this->municips=    $municip->where('id',auth()->user()->municip_id)->get();
+        }
+        //$this->municips=    $municip->where('id',auth()->user()->municip_id)->get();
     }
 
      public function filterContainerByMunicip()

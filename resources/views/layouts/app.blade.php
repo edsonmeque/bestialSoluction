@@ -157,10 +157,7 @@
                                 <a href="{{asset('/districts')}}"> Distritos </a>
                             </li>
                             <li>
-                                <a href="{{asset('/buinds')}}"> Bairros </a>
-                            </li>
-                            <li>
-                                <a href="{{asset('/municips')}}">Municípios</a>
+                                <a href="{{asset('/municips')}}">Posto Admistrativos</a>
                             </li>
 
                         </ul>

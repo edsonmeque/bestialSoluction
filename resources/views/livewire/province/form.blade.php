@@ -20,7 +20,7 @@
                                 <label class="form-label">Province</label>
                                 <div class="form-icon position-relative">
                                     <i data-feather="user" class="fea icon-sm icons"></i>
-                                    <input name="name" id="first" type="text"  required wire:model="name" class="form-control ps-5" placeholder="First Name :">
+                                    <input name="name" id="first" type="text"  required wire:model="name" class="form-control ps-5" placeholder="Nome">
                                 </div>
                             </div>
                         </div><!--end col-->

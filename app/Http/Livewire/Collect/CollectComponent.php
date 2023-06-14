@@ -2,10 +2,12 @@
 
 namespace App\Http\Livewire\Collect;
 
-use App\Models\Collect;
 use App\Models\User;
+use App\Models\Collect;
+use App\Models\Municip;
 use Livewire\Component;
 use Livewire\WithPagination;
+use Illuminate\Support\Facades\Auth;
 
 class CollectComponent extends Component
 {
@@ -20,7 +22,7 @@ class CollectComponent extends Component
     {
 
         if(strlen($this->search)>0){
-          
+
             $info = Collect::where('id', 'like', '%'.$this->search.'%')
             ->OrWhere('created_at', 'like', '%'.$this->search.'%')
             ->paginate($this->pagination);
@@ -35,9 +37,27 @@ class CollectComponent extends Component
                 return view('livewire.collect.component',[
                     'info'=>Collect::paginate($this->pagination)
                 ]);
-            }else{
+            }else if(auth()->user()->roles->first()->name =='admin'){
+                $municips= Municip::where('id',Auth::user()->municip_id)->get();
+
+
+                foreach($municips as $mu){
+                       $getContainers = $mu->containers;
+
+                      foreach($getContainers  as  $c){
+
+                           $data = Collect::where('container_id',$c->id)->get();
+                           foreach ($data as $d) {
+
+                            return view('livewire.collect.component',[
+                                'info'=>$d::paginate($this->pagination)
+                            ]);
+                           }
+
+                      }
+                }
                 return view('livewire.collect.component',[
-                    'info'=>Collect::where('user_id',auth()->user()->municip_id)->paginate($this->pagination)
+                    'info'=>Collect::paginate($this->pagination)
                 ]);
             }
 
@@ -65,11 +85,22 @@ class CollectComponent extends Component
 
     }
 
-    public function edit($id)
+    public function distrory($id)
     {
-        $record = Collect::findOrFail($id);
-
-        $this->selected_id =$id;
-        $this->action = 2;
+        if($id){
+            $info = Collect::find($id);
+            $info->delete();
+            $this->resetInput();
+            session()->flash('message', 'Registo eliminado com sucesso');
+        }else{
+            session()->flash('msg_error', 'falha ao eliminar registo');
+        }
     }
+
+    protected  $listeners = [
+        'deletedColected'=>'distrory'
+    ];
+
+
+
 }

@@ -27,8 +27,7 @@ class DistrictComponent extends Component
     }
     public function render()
     {
-
-         if(auth()->user()->roles->first()->name == 'super-admin'){
+        
             if(strlen($this->search) > 0){
                 return view('livewire.district.component',[
                     'info'=>
@@ -41,12 +40,8 @@ class DistrictComponent extends Component
             return view('livewire.district.component',[
                 'info' => $info
             ]);
-         }else{
-             $info = District::where('id',auth()->user()->district_id)->paginate(5);
-             return view('livewire.district.component',[
-                 'info' => $info
-             ]);
-         }
+         
+         
 
     }
 
@@ -73,24 +68,22 @@ class DistrictComponent extends Component
 
     public function edit($id)
     {
-         if(auth()->user()->roles->first()->name == 'super-admin'){
+    
         $record = District::findOrFail($id);
         $this->name=$record->name;
         $this->province_id=$record->province_id;
         $this->selected_id =$id;
         $this->action = 2;
-    }else{
-        abort(401);
-    }
     }
 
 
     public function storeOrUpdate()
     {
 
-        if(auth()->user()->roles->first()->name == 'super-admin'){
+        
+    
         $this->validate([
-            'name' => 'required|min:3',
+            'name' => 'required',
             'province_id' => 'required|integer',
         ]);
 
@@ -136,9 +129,7 @@ class DistrictComponent extends Component
         }
 
         $this->resetInput();
-    }else {
-        abort(401);
-    }
+ 
     }
 
     public function distrory($id)

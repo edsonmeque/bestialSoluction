@@ -21,7 +21,7 @@ return new class extends Migration
             $table->string('phone');
             $table->string('address');
 
-            
+
             $table->unsignedInteger('district_id');
             $table->foreign('district_id')->references('id')->on('districts');
 

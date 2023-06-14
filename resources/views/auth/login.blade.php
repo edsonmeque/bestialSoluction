@@ -20,7 +20,7 @@
                             @enderror
                                 </div>
                                 <div class="form-floating mb-3">
-                                    <input type="password" class="form-control @error('password') is-invalid @enderror" name="password" required autocomplete="current-password" id="floatingPassword" >
+                                    <input type="password" class="form-control @error('password') is-invalid @enderror" name="password" value="{{ old('password') }}" required autocomplete="current-password" id="floatingPassword" >
                                     <label for="floatingPassword">Password</label>
 
                                 @error('password')

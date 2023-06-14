@@ -5,12 +5,10 @@ use App\Http\Livewire\Point\PointComponent;
 
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('auth.login');
 });
 
 Auth::routes();
-
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
 Route::view('provinces','admin.backend.pages.province.index');
 Route::view('districts','admin.backend.pages.districts.index');
@@ -25,4 +23,4 @@ Route::view('maps','admin.backend.pages.maps.index');
 Route::view('users','admin.backend.pages.user.indexw');
 Route::view('point','admin.backend.pages.point.index');
 Route::view('entities','admin.backend.pages.entity.index');
-//fRoute::post('points/{lat}{lng}',[PointComponent::class,'posicao'])->name('points.ponto');
+

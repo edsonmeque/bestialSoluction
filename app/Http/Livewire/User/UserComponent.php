@@ -30,11 +30,15 @@ class UserComponent extends Component
     public function mount( Municip $municip)
     {
         if(auth()->user()->roles->first()->name =='super-admin'){
-            $this->municipies = $municip;
-        }else{
-            $this->municipies = $municip;
-        }
 
+            $this->municipies = $municip;
+
+        }else if(auth()->user()->roles->first()->name =='admin'){
+        $user1 = User::where('municip_id',Auth::user()->municip_id )->first();
+        $this->municipies = Municip::where('id',$user1->municip_id)->get();
+
+
+        }
     }
     public function render()
     {
@@ -47,7 +51,7 @@ class UserComponent extends Component
             if(auth()->user()->roles->first()->name =='super-admin'){
                 $info = User::paginate($this->pagination);
             }else{
-                $info = User::where('municip_id',Auth::user()->municip_id )->paginate($this->pagination);
+                $info = User::where('municip_id',Auth::user()->municip_id )->orWhere('municip_id',0 )->paginate($this->pagination);
             }
         }
         return view('livewire.user.component',[
@@ -83,10 +87,11 @@ class UserComponent extends Component
     {
         $record = User::findOrFail($id);
 
-        $this->name=$record->name;
+        $this->name= $record->name;
         $this->email=$record->email;
         $this->phone=$record->phone;
         $this->password=$record->password;
+        $this->password_confirm= $record->password;
         $this->status=$record->status;
         $this->municip_id=$record->municip_id;
 
@@ -97,15 +102,14 @@ class UserComponent extends Component
     public function storeOrUpdate()
     {
 
-        // $this->validate([
-        //     'name'=>'required|string',
-        //     'email'=>'required|string|unique:users,email',
-        //     'phone'=>'required|string',
-        //     'status'=>'required|string',
-        //     'password'=>'required|same:password_confirm',
-        //     'password_confirm'=>'required',
-        //     'municip_id' =>'required|integer'
-        // ]);
+        $this->validate([
+            'name'=>'required|string',
+            'email'=>'required|string',
+            'phone'=>'required|string',
+            'password'=>'required|same:password_confirm',
+            'password_confirm'=>'required',
+            'municip_id' =>'required'
+        ]);
 
         if($this->selected_id>0){
             $exists = User::where('email',$this->name)
@@ -128,8 +132,6 @@ class UserComponent extends Component
 
         if($this->selected_id<=0){
 
-
-//d($this->municip_id);
             $info = User::create([
             'name'=>$this->name,
             'email'=>$this->email,

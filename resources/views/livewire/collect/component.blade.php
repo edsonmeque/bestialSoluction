@@ -29,8 +29,6 @@
                                     <th>Tags</th>
                                     <th>Latitude</th>
                                     <th>Longetude</th>
-                                    <th>Bairro</th>
-                                    <th>Municipio</th>
                                     <th>Estado</th>
                                     <th>Data Coleta</th>
 
@@ -46,8 +44,6 @@
                                 <td>{{$c->container->tags}}</td>
                                 <td>{{$c->lat}}</td>
                                 <td>{{$c->lng}}</td>
-                                <td>{{$c->container->municip->district->buinds->name?? ''}}</td>
-                                <td>{{$c->container->municip->tags?? ''}}</td>
                                 <td>
                                 @if($c->status_id == 4)
                                     <span class="badge bg-success">Alocado</span>
@@ -61,7 +57,7 @@
                                 <td>{{$c->created_at}}</td>
 
                                 <td>
-                                    <a onclick="ConfirmDeleteImage('{{$c->id}}')" class="btn btn-sm btn-danger"><svg svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-trash-2">
+                                    <a onclick="ConfirmDeleteContainer('{{$c->id}}')" class="btn btn-sm btn-danger"><svg svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-trash-2">
                                         <polyline points="3 6 5 6 21 6"></polyline>
                                        <path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"></path></svg></a>
                                 </td>
@@ -76,7 +72,6 @@
                                     <th>Tags</th>
                                     <th>Latitude</th>
                                     <th>Longetude</th>
-                                    <th>Bairro</th>
                                     <th>Municipio</th>
                                     <th>Estado</th>
                                     <th>Data da Coleta</th>
@@ -123,7 +118,7 @@
 
             }).then(okay => {
                 if(okay.isConfirmed == true) {
-                    window.livewire.emit('deletedContainer',id);
+                    window.livewire.emit('deletedColected',id);
                     Swal.fire(
                     'Registro Deletados Com Sucesso!',
                     'Confirmado!',

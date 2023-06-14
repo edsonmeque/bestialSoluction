@@ -9,7 +9,7 @@
                         <div class="col-lg-4">
                         <div class="row">
                              <div class="col-lg-8">
-                                <input type="text" class="form-control" placeholder="First name">
+                                <input type="text" class="form-control border rounded" wire:model="search" id="search"  placeholder="Search Keywords...">
                              </div>
 
                              <div class="col-lg-4 mt-3">
@@ -21,14 +21,13 @@
                             <button type="button" wire:click="doAction(2)" class="btn btn-info round"> <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-plus-circle"><circle cx="12" cy="12" r="10"></circle><line x1="12" y1="8" x2="12" y2="16"></line><line x1="8" y1="12" x2="16" y2="12"></line></svg></button>
                         </div>
                     </div>
-
                     <div class="table-responsive mb-4 mt-4">
                         <table id="zero-config" class="table table-hover">
                             <thead>
                                 <tr>
                                     <th>#Id</th>
                                     <th>Nome</th>
-                                    <th>Províncias</th>
+                                    <th>Provincia</th>
                                     <th>created_at</th>
                                     <th>updated_at</th>
 
@@ -46,16 +45,21 @@
                                 <td>{{$district->updated_at}}</td>
 
                                 <td>
+                                    <a  wire:click="edit({{$district->id}})" class="btn btn-sm btn-primary"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-edit"><path  d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"> </path> <path  d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"> </path></svg></a>
+                                    <a onclick="ConfirmDeleteDestrict('{{$district->id}}')" class="btn btn-sm btn-danger"><svg svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-trash-2">
+                                        <polyline points="3 6 5 6 21 6"></polyline>
+                                       <path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"></path></svg>
+                                </td>
 
-                                    <a onclick="ConfirmDeleteProvince('{{$district->id}}')"><svg svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-x-circle table-cancel"><circle cx="12" cy="12" r="10"></circle><line x1="15" y1="9" x2="9" y2="15"></line><line x1="9" y1="9" x2="15" y2="15"></line></svg></a></td>
-                            </tr>
+
+                                </tr>
                             @endforeach
                             </tbody>
                             <tfoot>
                                 <tr>
                                     <th>Id</th>
                                     <th>Nome</th>
-                                    <th>Províncias</th>
+                                    <th>Provincia</th>
                                     <th>created_at</th>
                                     <th>updated_at</th>
                                     <th></th>
@@ -86,7 +90,7 @@
 </div>
 
 <script>
-    function ConfirmDeleteProvince(id){
+    function ConfirmDeleteDestrict(id){
             let me = this;
             swal.fire({
                 title: 'Confirmar',
@@ -113,7 +117,5 @@
             });
     }
     </script>
-
-
 
 

@@ -34,10 +34,10 @@ class PointComponent extends Component
         }else{
             $info = Image::select('*')
             ->leftJoin('container_images', 'images.id', '=', 'container_images.id')
-
+            ->where('container_images.image_id', null)
                ->get();
         }
-        $info = Image::get();// provisorio
+        
         return view('livewire.point.component',[
             'info' => $info
         ]);
