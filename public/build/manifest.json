@@ -1,0 +1,116 @@
+{
+  "resources/assets/img/arrow-down.png": {
+    "file": "assets/arrow-down.a11a115c.png",
+    "src": "resources/assets/img/arrow-down.png"
+  },
+  "resources/assets/js/loader.js": {
+    "file": "assets/loader.6a8d11d2.js",
+    "src": "resources/assets/js/loader.js",
+    "isEntry": true
+  },
+  "resources/assets/js/libs/jquery-3.1.1.min.js": {
+    "file": "assets/jquery-3.1.1.min.860592f1.js",
+    "src": "resources/assets/js/libs/jquery-3.1.1.min.js",
+    "isEntry": true
+  },
+  "resources/bootstrap/js/popper.min.js": {
+    "file": "assets/popper.min.247b195c.js",
+    "src": "resources/bootstrap/js/popper.min.js",
+    "isEntry": true
+  },
+  "resources/bootstrap/js/bootstrap.min.js": {
+    "file": "assets/bootstrap.min.276b206e.js",
+    "src": "resources/bootstrap/js/bootstrap.min.js",
+    "isEntry": true
+  },
+  "resources/plugins/perfect-scrollbar/perfect-scrollbar.min.js": {
+    "file": "assets/perfect-scrollbar.min.4bea9083.js",
+    "src": "resources/plugins/perfect-scrollbar/perfect-scrollbar.min.js",
+    "isEntry": true
+  },
+  "resources/assets/js/app.js": {
+    "file": "assets/app.e5198d1b.js",
+    "src": "resources/assets/js/app.js",
+    "isEntry": true
+  },
+  "resources/assets/js/sweetalert2@11.js": {
+    "file": "assets/sweetalert2@11.ca824b52.js",
+    "src": "resources/assets/js/sweetalert2@11.js",
+    "isEntry": true
+  },
+  "resources/plugins/table/datatable/datatables.js": {
+    "file": "assets/datatables.a30db5af.js",
+    "src": "resources/plugins/table/datatable/datatables.js",
+    "isEntry": true
+  },
+  "resources/plugins/sweetalerts/promise-polyfill.js": {
+    "file": "assets/promise-polyfill.f362d2ef.js",
+    "src": "resources/plugins/sweetalerts/promise-polyfill.js",
+    "isEntry": true
+  },
+  "resources/plugins/highlight/highlight.pack.js": {
+    "file": "assets/highlight.pack.486841d4.js",
+    "src": "resources/plugins/highlight/highlight.pack.js",
+    "isEntry": true
+  },
+  "resources/assets/js/scrollspyNav.js": {
+    "file": "assets/scrollspyNav.8de1663c.js",
+    "src": "resources/assets/js/scrollspyNav.js",
+    "isEntry": true
+  },
+  "resources/plugins/sweetalerts/sweetalert2.min.js": {
+    "file": "assets/sweetalert2.min.3cd2620e.js",
+    "src": "resources/plugins/sweetalerts/sweetalert2.min.js",
+    "isEntry": true
+  },
+  "resources/plugins/sweetalerts/custom-sweetalert.js": {
+    "file": "assets/custom-sweetalert.90a37de1.js",
+    "src": "resources/plugins/sweetalerts/custom-sweetalert.js",
+    "isEntry": true
+  },
+  "resources/assets/css/loader.css": {
+    "file": "assets/loader.b0e5738c.css",
+    "src": "resources/assets/css/loader.css",
+    "isEntry": true
+  },
+  "resources/assets/css/components/custom-sweetalert.css": {
+    "file": "assets/custom-sweetalert.7a3fe70a.css",
+    "src": "resources/assets/css/components/custom-sweetalert.css",
+    "isEntry": true
+  },
+  "resources/plugins/apex/apexcharts.css": {
+    "file": "assets/apexcharts.901523b1.css",
+    "src": "resources/plugins/apex/apexcharts.css",
+    "isEntry": true
+  },
+  "resources/assets/css/scrollspyNav.css": {
+    "file": "assets/scrollspyNav.7e3b57c7.css",
+    "src": "resources/assets/css/scrollspyNav.css",
+    "isEntry": true
+  },
+  "resources/plugins/sweetalerts/sweetalert.css": {
+    "file": "assets/sweetalert.02e6edbb.css",
+    "src": "resources/plugins/sweetalerts/sweetalert.css",
+    "isEntry": true
+  },
+  "resources/assets/css/plugins.css": {
+    "file": "assets/plugins.7677b632.css",
+    "src": "resources/assets/css/plugins.css",
+    "isEntry": true
+  },
+  "resources/plugins/animate/animate.css": {
+    "file": "assets/animate.36758674.css",
+    "src": "resources/plugins/animate/animate.css",
+    "isEntry": true
+  },
+  "resources/assets/css/dashboard/dash_2.css": {
+    "file": "assets/dash_2.04ae2bea.css",
+    "src": "resources/assets/css/dashboard/dash_2.css",
+    "isEntry": true
+  },
+  "resources/plugins/sweetalerts/sweetalert2.min.css": {
+    "file": "assets/sweetalert2.min.c5c3260a.css",
+    "src": "resources/plugins/sweetalerts/sweetalert2.min.css",
+    "isEntry": true
+  }
+}
