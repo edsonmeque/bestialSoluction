@@ -30,6 +30,8 @@ export default defineConfig({
                 'resources/assets/js/scrollspyNav.js',
                 'resources/plugins/sweetalerts/sweetalert2.min.js',
                 'resources/plugins/sweetalerts/custom-sweetalert.js',
+                'resources/js/chart.js',
+
             ],
             refresh: true,
         }),

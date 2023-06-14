@@ -68,6 +68,11 @@
     "src": "resources/plugins/sweetalerts/custom-sweetalert.js",
     "isEntry": true
   },
+  "resources/js/chart.js": {
+    "file": "assets/chart.eafd4da0.js",
+    "src": "resources/js/chart.js",
+    "isEntry": true
+  },
   "resources/assets/css/loader.css": {
     "file": "assets/loader.b0e5738c.css",
     "src": "resources/assets/css/loader.css",
@@ -76,11 +81,6 @@
   "resources/assets/css/components/custom-sweetalert.css": {
     "file": "assets/custom-sweetalert.7a3fe70a.css",
     "src": "resources/assets/css/components/custom-sweetalert.css",
-    "isEntry": true
-  },
-  "resources/plugins/apex/apexcharts.css": {
-    "file": "assets/apexcharts.901523b1.css",
-    "src": "resources/plugins/apex/apexcharts.css",
     "isEntry": true
   },
   "resources/assets/css/scrollspyNav.css": {
@@ -93,11 +93,6 @@
     "src": "resources/plugins/sweetalerts/sweetalert.css",
     "isEntry": true
   },
-  "resources/assets/css/plugins.css": {
-    "file": "assets/plugins.7677b632.css",
-    "src": "resources/assets/css/plugins.css",
-    "isEntry": true
-  },
   "resources/plugins/animate/animate.css": {
     "file": "assets/animate.36758674.css",
     "src": "resources/plugins/animate/animate.css",
@@ -108,9 +103,19 @@
     "src": "resources/assets/css/dashboard/dash_2.css",
     "isEntry": true
   },
+  "resources/plugins/apex/apexcharts.css": {
+    "file": "assets/apexcharts.901523b1.css",
+    "src": "resources/plugins/apex/apexcharts.css",
+    "isEntry": true
+  },
   "resources/plugins/sweetalerts/sweetalert2.min.css": {
     "file": "assets/sweetalert2.min.c5c3260a.css",
     "src": "resources/plugins/sweetalerts/sweetalert2.min.css",
+    "isEntry": true
+  },
+  "resources/assets/css/plugins.css": {
+    "file": "assets/plugins.7677b632.css",
+    "src": "resources/assets/css/plugins.css",
     "isEntry": true
   }
 }
