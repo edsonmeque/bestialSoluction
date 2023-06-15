@@ -99,8 +99,6 @@ class UserComponent extends Component
         $this->name = $record->name;
         $this->email = $record->email;
         $this->phone = $record->phone;
-        $this->password = $record->password;
-        $this->password_confirm = $record->password;
         $this->status = $record->status;
         $this->municip_id = $record->municip_id;
 
@@ -110,16 +108,17 @@ class UserComponent extends Component
 
     public function storeOrUpdate()
     {
-        $this->validate([
-            'name' => 'required|string',
-            'email' => 'required|string',
-            'phone' => 'required|string',
-            'password' => 'required|same:password_confirm',
-            'password_confirm' => 'required',
-            'municip_id' => 'required',
-        ]);
 
         if ($this->selected_id > 0) {
+            $this->validate([
+                'name' => 'required|string',
+                'email' => 'required|string',
+                'phone' => 'required|string',
+                'password' => 'required|same:password_confirm',
+                'password_confirm' => 'required',
+                'municip_id' => 'required',
+            ]);
+
             $exists = User::where('email', $this->name)
                                ->where('id', '<>', $this->selected_id)
                                ->select('email')->get();
@@ -150,6 +149,13 @@ class UserComponent extends Component
 
             ]);
         } else {
+            $this->validate([
+                'name' => 'required|string',
+                'email' => 'required|string',
+                'phone' => 'required|string',
+                'municip_id' => 'required',
+            ]);
+
             $info = User::find($this->selected_id);
             $info->update([
                 'name' => $this->name,
