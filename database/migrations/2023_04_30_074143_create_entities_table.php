@@ -31,7 +31,6 @@ return new class extends Migration
             $table->unsignedInteger('user_id')->default(0);
             $table->foreign('user_id')->references('id')->on('users');
 
-
             $table->timestamps();
         });
     }

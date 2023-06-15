@@ -18,7 +18,7 @@ return new class extends Migration
             $table->string('name');
             $table->string('email')->unique();
             $table->string('phone')->nullable();
-            $table->enum('status',[1,0])->default(0);
+            $table->enum('status', [1, 0])->default(0);
             $table->unsignedInteger('municip_id')->default(0);
             $table->foreign('municip_id')->references('id')->on('municips')->onDelete('cascade');
             $table->timestamp('email_verified_at')->nullable();

@@ -10,43 +10,50 @@ use Livewire\WithPagination;
 class BuindComponent extends Component
 {
     use WithPagination;
+
     protected $paginationTheme = 'bootstrap';
 
     public $name;
+
     public $district_id;
+
     public $district;
-    public $selected_id, $search;
+
+    public $selected_id;
+
+    public $search;
+
     public $action = 1;
+
     public $pagination = 5;
 
-    public function mount(District $district){
-
+    public function mount(District $district)
+    {
         $this->district = $district;
     }
 
     public function render()
     {
-         if(auth()->user()->roles->first()->name == 'super-admin'){
-            if(strlen($this->search) > 0){
-                return view('livewire.buind.component',[
-                    'info'=>
-                    Buind::where('name','like'.'%'.$this->search.'%')->paginate($this->pagination)
+        if (auth()->user()->roles->first()->name == 'super-admin') {
+            if (strlen($this->search) > 0) {
+                return view('livewire.buind.component', [
+                    'info' => Buind::where('name', 'like'.'%'.$this->search.'%')->paginate($this->pagination),
                 ]);
-            }else{
+            } else {
                 $info = Buind::paginate($this->pagination);
             }
 
-            return view('livewire.buind.component',[
-                'info' => $info
+            return view('livewire.buind.component', [
+                'info' => $info,
             ]);
-         }else{
-             $info = District::where('id',auth()->user()->district_id)->paginate(5);
-             return view('livewire.district.component',[
-                 'info' => $info
-             ]);
-         }
-    }
+        } else {
+            $info = District::where('id', auth()->user()->district_id)->paginate(5);
 
+            return view('livewire.district.component', [
+                'info' => $info,
+            ]);
+        }
+    }
 
     public function updateSearch()
     {
@@ -54,18 +61,18 @@ class BuindComponent extends Component
     }
 
     public function doAction($action)
-    {   $this->resetInput();
+    {
+        $this->resetInput();
 
         $this->action = $action;
     }
 
-
     public function resetInput()
     {
-        $this->name='';
+        $this->name = '';
         $this->selected_id = null;
         $this->action = 1;
-        $this->search='';
+        $this->search = '';
         $this->district_id = 0;
     }
 
@@ -73,15 +80,14 @@ class BuindComponent extends Component
     {
         // if(auth()->user()->roles->first()->name == 'super-admin'){
         $record = Buind::findOrFail($id);
-        $this->name=$record->name;
-        $this->district_id=$record->district_id;
-        $this->selected_id =$id;
+        $this->name = $record->name;
+        $this->district_id = $record->district_id;
+        $this->selected_id = $id;
         $this->action = 2;
-    // }else{
+        // }else{
     //     abort(401);
-    // }
+        // }
     }
-
 
     public function storeOrUpdate()
     {
@@ -91,34 +97,32 @@ class BuindComponent extends Component
             'district_id' => 'required|integer',
         ]);
 
-        if($this->selected_id>0){
-            $exists = Buind::where('name',$this->name)
-                               ->where('id','<>',$this->selected_id)
+        if ($this->selected_id > 0) {
+            $exists = Buind::where('name', $this->name)
+                               ->where('id', '<>', $this->selected_id)
                                ->select('name')->get();
-            if($exists->count() > 0) {
-                 session()->flash('msg_error','Já  existe registo com mesmo nome');
-                 $this->resetInput();
+            if ($exists->count() > 0) {
+                session()->flash('msg_error', 'Já  existe registo com mesmo nome');
+                $this->resetInput();
+
                 return;
             }
-        }else{
+        } else {
+            $exists = Buind::where('name', $this->name)->select('name')->get();
+            if ($exists->count() > 0) {
+                session()->flash('msg_error', 'Já  existe registo com mesmo nome');
+                $this->resetInput();
 
-            $exists = Buind::where('name',$this->name)->select('name')->get();
-            if($exists->count() > 0) {
-                  session()->flash('msg_error','Já  existe registo com mesmo nome');
-                 $this->resetInput();
                 return;
             }
         }
 
-        if($this->selected_id<=0){
-
-
+        if ($this->selected_id <= 0) {
             $info = Buind::create([
                 'name' => $this->name,
-                'district_id' =>$this->district_id,
+                'district_id' => $this->district_id,
             ]);
-        }else{
-
+        } else {
             $info = Buind::find($this->selected_id);
             $info->update([
                 'name' => $this->name,
@@ -126,39 +130,35 @@ class BuindComponent extends Component
             ]);
         }
 
-        if($this->selected_id){
+        if ($this->selected_id) {
             session()->flash('success', 'Successfully selected_id');
-        }else{
+        } else {
             session()->flash('success', 'Successfully selected_id');
         }
 
         $this->resetInput();
-    // }else {
+        // }else {
     //     abort(401);
-    // }
+        // }
     }
-
 
     public function distrory($id)
     {
         // if(auth()->user()->roles->first()->name == 'super-admin'){
-        if($id){
+        if ($id) {
             $info = Buind::find($id);
             $info->delete();
             $this->resetInput();
             session()->flash('success', 'Successfully selected_id');
-        }else{
+        } else {
             session()->flash('success', 'Successfully selected_id');
-     }
-    // }else{
+        }
+        // }else{
         //     abort(401);
         // }
     }
 
-
-    protected  $listeners = [
-        'deletedBuind'=>'distrory'
+    protected $listeners = [
+        'deletedBuind' => 'distrory',
     ];
-
-
 }

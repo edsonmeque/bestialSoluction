@@ -187,6 +187,21 @@
                 </div>
             </div>
 
+            @role('super-admin')
+            <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12 layout-spacing">
+                <div class="widget widget-chart-three">
+                    <div class="widget-heading">
+                        <div class="">
+                            <h5 class="">Numero de colhetas Realizadas por cada Municipio</h5>
+                        </div>
+                    </div>
+
+                    <div class="widget-content">
+                        {!! $municipios->render() !!}
+                    </div>
+                </div>
+            </div>
+            @endrole
 
 
         </div>

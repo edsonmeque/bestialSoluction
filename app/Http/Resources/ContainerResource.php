@@ -15,12 +15,12 @@ class ContainerResource extends JsonResource
     public function toArray($request)
     {
         return [
-           'id'=>$this->id,
-           'number'=>$this->number,
-           'tags'=>$this->tags,
-           'lat'=>$this->lat,
-           'lng'=>$this->lng,
-           'updated'=>$this->created,
+            'id' => $this->id,
+            'number' => $this->number,
+            'tags' => $this->tags,
+            'lat' => $this->lat,
+            'lng' => $this->lng,
+            'updated' => $this->created,
         ];
     }
 }

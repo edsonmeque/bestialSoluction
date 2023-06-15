@@ -2,9 +2,9 @@
 
 namespace Database\Seeders;
 
-use Illuminate\Database\Console\Seeds\WithoutModelEvents;
-use Illuminate\Database\Seeder;
 use App\Models\Region;
+use Illuminate\Database\Seeder;
+
 class RegionTableSeeder extends Seeder
 {
     /**
@@ -14,13 +14,13 @@ class RegionTableSeeder extends Seeder
      */
     public function run()
     {
-        $datas = ['Norte','Centro','Sul'];
+        $datas = ['Norte', 'Centro', 'Sul'];
 
         foreach ($datas as $data) {
-             Region::create([
+            Region::create([
                 'name' => $data,
-                'country_id'=>1
-             ]);
+                'country_id' => 1,
+            ]);
         }
     }
 }

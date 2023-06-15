@@ -27,7 +27,6 @@ return new class extends Migration
             $table->foreign('status_id')->references('id')->on('statuses');
             $table->boolean('state')->default(0);
             $table->timestamps();
-
         });
     }
 

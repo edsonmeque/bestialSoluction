@@ -5,7 +5,6 @@ namespace Database\Seeders;
 use App\Models\District;
 use App\Models\Province;
 use Illuminate\Database\Seeder;
-use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 
 class ProvinceTableSeeder extends Seeder
 {
@@ -16,28 +15,27 @@ class ProvinceTableSeeder extends Seeder
      */
     public function run()
     {
-        $dataNorte = ['Niassa','Cabo Delegado','Nampula'];
+        $dataNorte = ['Niassa', 'Cabo Delegado', 'Nampula'];
 
         foreach ($dataNorte as $data) {
-             Province::create([
+            Province::create([
                 'name' => $data,
-                'region_id'=>1
-             ]);
+                'region_id' => 1,
+            ]);
         }
-        $dataCentro = ['Zambezia','Sofala','Manica','Tete'];
+        $dataCentro = ['Zambezia', 'Sofala', 'Manica', 'Tete'];
         foreach ($dataCentro as $data) {
             Province::create([
-               'name' => $data,
-               'region_id'=>2
+                'name' => $data,
+                'region_id' => 2,
             ]);
-       }
-       $dataSul = ['Inhabane','Gaza','Maputo'];
-       foreach ($dataSul as $data) {
-        Province::create([
-           'name' => $data,
-           'region_id'=>3
-        ]);
-
+        }
+        $dataSul = ['Inhabane', 'Gaza', 'Maputo'];
+        foreach ($dataSul as $data) {
+            Province::create([
+                'name' => $data,
+                'region_id' => 3,
+            ]);
 
     //     $dataSul = ['Beira','Manica','Tete','Zambezia'];
     //    foreach ($dataSul as $data) {
@@ -45,8 +43,7 @@ class ProvinceTableSeeder extends Seeder
     //        'name' => $data,
     //        'province_id'=>6
     //     ]);
-  // }
-   }
-
+            // }
+        }
     }
 }
